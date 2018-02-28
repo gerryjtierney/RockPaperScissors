@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<title>Rock Paper Scissors Game</title>
+</head>
+
+<body>
+<script>
+//these lines set the initial player and computer points
+  let playerPoints = 0;
+  let computerPoints = 0;
+ //this creates the function "game" and prompts the user for their choice, converting it to uppercase in the process
+ //it then generates a computer selection by using the computerPlay function
+  function game() {
+    for (i = 0; i < 5; i++) {
+      let playerSelection = prompt("Rock paper or scissors?").toUpperCase();
+      let computerSelection = computerPlay();
+      console.log(playRound(playerSelection, computerSelection));
+    }
+    if (playerPoints > computerPoints) {
+      console.log("Final score: " + playerPoints + " to " + computerPoints + ". You win!");
+    }
+    else if (playerPoints < computerPoints) {
+      console.log("Final score: " + playerPoints + " to " + computerPoints + ". You lose!");
+    }
+    else if (playerPoints == computerPoints) {
+      console.log("Final score: " + playerPoints + " to " + computerPoints + ". Draw!");
+    }
+  }
+  
+  
+  //this creates an array called rps with the three stated values (rock paper scissors)
+  let rps = ["Rock", "Paper", "Scissors"];
+  
+  function computerPlay() {
+    return rps[Math.floor(Math.random() * rps.length)];
+  }
+  
+  //this function compares the player and computer selections and gives the result
+  function playRound(playerSelection, computerSelection) {
+    if (playerSelection == "ROCK") {
+      if (computerSelection == "Rock") {
+        return "You rolled rock. Computer rolled rock. Tie! You: " + playerPoints + " point(s). Computer: " + computerPoints + " point(s).";
+      }
+      else if (computerSelection == "Paper") {
+        computerPoints += 1;
+        return "You rolled rock. Computer rolled paper. Paper beats rock. Computer gains a point! You: " + playerPoints + " point(s). Computer: " + computerPoints + " point(s).";
+      }
+      else if (computerSelection == "Scissors") {
+        playerPoints += 1;
+        return "You rolled rock. Computer rolled scissors. Rock beats scissors. You gain a point! You: " + playerPoints + " point(s). Computer: " + computerPoints + " point(s).";
+      }
+    }
+	
+	
+	
+    if (playerSelection == "PAPER") {
+      if (computerSelection == "Rock") {
+        playerPoints += 1;
+        return "You rolled paper. Computer rolled rock. Paper beats rock. You gain a point! You: " + playerPoints + " point(s). Computer: " + computerPoints + " point(s).";
+      }
+      else if (computerSelection == "Paper") {
+        return "You rolled paper. Computer rolled paper. Tie! You: " + playerPoints + " point(s). Computer: " + computerPoints + " point(s).";
+      }
+      else if (computerSelection == "Scissors") {
+        computerPoints += 1;
+        return "You rolled paper. Computer rolled scissors. Scissors beats paper. You lose! You: " + playerPoints + " point(s). Computer: " + computerPoints + " point(s).";
+      }
+    }
+	
+	
+	
+    if (playerSelection == "SCISSORS") {
+      if (computerSelection == "Rock") {
+        computerPoints =+ 1;
+        return "You rolled scissors. Computer rolled rock. Rock beats scissors. You lose! You: " + playerPoints + " point(s). Computer: " + computerPoints + " point(s).";
+      }
+      else if (computerSelection == "Paper") {
+        playerPoints += 1;
+        return "You rolled scissors. Computer rolled paper. Scissors beats paper. You gain a point! You: " + playerPoints + " point(s). Computer: " + computerPoints + " point(s).";
+      }
+      else if (computerSelection == "Scissors") {
+        return "You rolled scissors. Computer rolled scissors. Tie! You: " + playerPoints + " point(s). Computer: " + computerPoints + " point(s).";
+      }
+    }
+  }
+  game();
+  </script>
+
+
+
+
+
+
+</body>
+
+</html>
